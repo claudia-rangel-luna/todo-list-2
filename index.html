@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TODO List V.2</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<header>
+		<div class="jumbotron jumbotron-fluid bg-secondary">
+		  <div class="container">
+		    <h1 class="display-3">TODO List</h1>
+		    <p class="lead">Version Two</p>
+		  </div>
+		</div>
+	</header>
+	<main class="d-flex justify-content-center">
+		<div class="col-lg-12 d-flex justify-content-center">
+	    	<div class="input-group col-lg-6 ">
+				<input type="text" class="form-control" placeholder="First name">
+				<input type="text" class="form-control" placeholder="Last name">
+			</div>	
+			<div class="input-group col-lg-6 ">
+				<input type="date" class="form-control" placeholder="Due Date">
+		     	<input type="text" class="form-control" id="newTask" placeholder="Add new task..." aria-label="Search for...">	
+	    	<span class="input-group-btn">
+		        <button class="btn btn-dark" id="btnAdd" type="button ">Add!</button>
+	      		</span>
+	      	</div>
+	  	</div>
+	</main>
+	<section>
+		<h1 class="header">Tasks TODO</h1>
+		<div class="container d-flex justify-content-center info">
+		  <div class="row d-flex col-lg-10">
+		    <div class="col-1">
+		       <input type="checkbox" aria-label="Checkbox for following text input">
+		    </div>
+		    <div class="col-sm">
+		      One of three columns
+		    </div>
+		    <div class="col-1">
+		     <i class="fa fa-times" aria-hidden="true"></i>
+		    </div>
+		  </div>
+		</div>
+		<div class="container d-flex justify-content-center info">
+		  <div class="row d-flex col-lg-10">
+		    <div class="col-1">
+		       <input type="checkbox" aria-label="Checkbox for following text input">
+		    </div>
+		    <div class="col-sm">
+		      One of three columns
+		    </div>
+		    <div class="col-1">
+		     <i class="fa fa-times" aria-hidden="true"></i>
+		    </div>
+		  </div>
+		</div>
+		<div class="container d-flex justify-content-center info">
+		  <div class="row d-flex col-lg-10">
+		    <div class="col-1">
+		       <input type="checkbox" aria-label="Checkbox for following text input">
+		    </div>
+		    <div class="col-sm">
+		      One of three columns
+		    </div>
+		    <div class="col-1">
+		     <i class="fa fa-times" aria-hidden="true"></i>
+		    </div>
+		  </div>
+		</div>
+		<div class="container d-flex justify-content-center info">
+		  <div class="row d-flex col-lg-10">
+		    <div class="col-1">
+		       <input type="checkbox" aria-label="Checkbox for following text input">
+		    </div>
+		    <div class="col-sm">
+		      One of three columns
+		    </div>
+		    <div class="col-1">
+		     <i class="fa fa-times" aria-hidden="true"></i>
+		    </div>
+		  </div>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		var newTask = document.querySelector("#newTask");
+		var btnAdd = document.querySelector("#btnAdd");
+
+
+	</script>	
+</body>
+</html>

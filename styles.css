@@ -1,0 +1,20 @@
+body {
+	background-color: lightgrey;
+}
+.form-control {
+	font-size: 24px;
+}
+.header {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.row {
+	border: 1px solid white;
+
+}
+.info {
+	font-size: 24px;
+
+}
