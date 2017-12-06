@@ -1,141 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>TODO List V.2</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <title>TODO List V.2</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
-	<header>
-		<div class="jumbotron jumbotron-fluid ">
-		  <div class="container">
-		    <h1 class="display-3">TODO List</h1>
-		    <p class="lead">Version Two</p>
-		  </div>
-		</div>
-	</header>
-	
+    <header>
+        <div class="jumbotron jumbotron-fluid ">
+            <div class="container">
+                <h1 class="display-3">TODO List</h1>
+                <p class="lead">Version Two</p>
+            </div>
+        </div>
+    </header>
     <main class=" d-flex justify-content-center">
-    	<form>
-			  <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="firstName">First Name</label>
-			      <input type="text" class="form-control" id="firstName" placeholder="">
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="lastName">Last Name</label>
-			      <input type="text" class="form-control" id="lastName" placeholder="">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="dueDate">Due Date</label>
-			    <input type="date" class="form-control" id="dueDate" placeholder="">
-			  </div>
-			  <div class="form-group">
-			    <label for="newTask">New Task</label>
-			    <input type="text" class="form-control" id="newTask" placeholder="Description">
-			  </div>
-			  
-			  <button type="submit" id="btnAdd" class="btn btn-primary bg-secondary">Add! </button>
-		</form>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input type="date" class="form-control" id="dueDate" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="newTask">New Task</label>
+                <input type="text" class="form-control" id="newTask" placeholder="Description">
+            </div>
+            <button type="submit" id="btnAdd" class="btn btn-primary bg-secondary">Add! </button>
+        </form>
+    </main>
+    <section>
+        <h1 class="header">Tasks TODO</h1>
+        <div class="d-flex border col-md-10 justify-content-center">
+            <div class=" col-md-1 checkbox   ">
+                <span class="input-group-addon">  Complete
+	        	<!-- <input type="checkbox" aria-label="Checkbox for following text input"> -->
+	      		</span>
+            </div>
+            <div class="col-md-2">
+                <div class="col">First Name</div>
+            </div>
+            <div class="col-md-2">    
+                <div class="col">Last Name</div>
+            </div>
+            <div class="col-md-2">
+                <div class="col">Due Date</div>
+            </div>
+             <div class="col-md-2">    
+                <div class="col">New Task</div>
+            </div>
+            <div class="col-md-2 edit">
+            	<!-- <i class="fa fa-pencil" aria-hidden="true">Edit</i> -->
+			</div>
+            <div class="col-md-1">
+                <!-- <i class="fa fa-times" aria-hidden="true">Delete</i> -->
+            </div>
+        </div>
+        <div id="todos" class="col-md-10"></div>
         
-	</main>
-	<section>
-		<h1 class="header">Tasks TODO</h1>
-		<div id="todos"></div>
-		
-	</section>
+    </section>
+    <script type="text/javascript">
+    var task = document.querySelector("#newTask");
+    var lastName = document.querySelector("#lastName");
+    var firstName = document.querySelector("#firstName");
+    var submitButton = document.querySelector("#btnAdd");
+    var dueDate = document.querySelector("#dueDate");
+    var todos = document.querySelector("#todos");
 
-	<script type="text/javascript">
-		var task = document.querySelector("#newTask");
-		var lastName = document.querySelector("#lastName");
-		var firstName = document.querySelector("#firstName");
-		var submitButton = document.querySelector("#btnAdd");
-		var dueDate = document.querySelector("#dueDate");
-		var todos = document.querySelector("#todos");
+    submitButton.addEventListener("click", onSubmitButtonClick);
 
-		submitButton.addEventListener("click", onSubmitButtonClick);
-	
 
-	function onSubmitButtonClick () {
-    	updateClickCount();
-    	saveTaskToLocalStorage();
-    	renderAllTask();
-    	resetForm();
-    	consoleLogTasks();
+    function onSubmitButtonClick() {
+        updateClickCount();
+        saveTaskToLocalStorage();
+        renderAllTask();
+        resetForm();
+        consoleLogTasks();
     }
 
     function updateClickCount() {
-    	if (localStorage.taskcount)
-    		localStorage.taskCount = Number(localStorage.taskCount) + 1;
-    	else localStorage.taskCount = "1";
+        if (localStorage.taskCount)
+            localStorage.taskCount = Number(localStorage.taskCount) + 1;
+        else localStorage.taskCount = "1";
     }
 
     function saveTaskToLocalStorage() {
-    	localStorage["task" + localStorage.taskCount] = task.value;
-    	localStorage["lastName" + localStorage.taskCount] = task.value;
-    	localStorage["firstName" + localStorage.taskCount] = task.value;
-    	localStorage["dueDate" + localStorage.taskCount] = task.value;
+        localStorage["task" + localStorage.taskCount] = task.value;
+        localStorage["lastName" + localStorage.taskCount] = lastName.value;
+        localStorage["firstName" + localStorage.taskCount] = firstName.value;
+        localStorage["dueDate" + localStorage.taskCount] = dueDate.value;
 
-    	localStorage["status" + localStorage.taskCount] = "inprogress";
+        localStorage["status" + localStorage.taskCount] = "inprogress";
 
     }
+
     function renderAllTask() {
-    	var tasksToDisplay = "";
+        var tasksToDisplay = "";
 
         for (var i = 1; i <= localStorage.taskCount; i++) {
-        	if (localStorage["task" + i]){
-        		var isChecked = "";	
-        		if (localStorage["status" + i] == "complete")
-        			isChecked = "checked"; 
+            if (localStorage["task" + i]) {
+                var isChecked = "";
+                if (localStorage["status" + i] == "complete")
+                    isChecked = "checked";
 
-        		var list = "<div class=container d-flex justify-content-center info">
-					 + "<div class='row d-flex col-lg-10'>"
-					 + "<div class='col-1'>"
-					 + "<input type='checkbox' " + isChecked +" onchange='updateTaskStatus(" + i + ")'>"
-					 + "</div>"
-					 + "<div class='col-8 ml-0'> " + localStorage["task" + i] 
-					 + "</div>"
-					 + "<div class='col-1'>"
-					 + "<<i class='fa fa-times' aria-hidden='true' onclick='deleteTask(" + i +")'></i>"
-					 + "</div>"
-					 + "</div></div>"
+                var list =  "<div class='d-flex col-md-12 border  justify-content-center'>"
+            		+	"<div class='col-md-1 checkbox'>"
+                	+	"<span class='input-group-addon'> "
+	        		+	"<input type='checkbox' " + isChecked + " onchange='updateTaskStatus(" + i + ")'>"
+	      			+	"</span>"
+            		+	"</div>"
+            		+ 	"<div class='col-md-2'>"
+                	+ 	"<div class='col'>" + localStorage["firstName" + i] + "</div>"
+            		+ 	"</div>"
+            		+	"<div class='col-md-2'>"    
+                	+	"<div class='col'>" + localStorage["lastName" + i] + "</div>"
+            		+	"</div>"
+            		+ 	"<div class='col-md-2'>"
+                	+ 	"<div class='col'> " + localStorage["dueDate" + i] + "</div>"
+            		+	"</div>"
+             		+ 	"<div class='col-md-2'>"    
+             		+	"<div class='col'> " + localStorage["task" + i] + "</div>"
+            		+	"</div>"
+            		+	"<div class='col-md-2 edit'>"
+            		+	"<i class='fa fa-pencil' aria-hidden='true'></i>"
+					+ 	"</div>"
+            		+	"<div class='col-md-1'>"
+                	+ 	"<i class='fa fa-times' aria-hidden='true' onclick='deleteTask(" + i + ")'></i>"
+            		+	"</div>"
+        			+	"</div>"                 
 
-					tasksToDisplay = list + tasksToDisplay;
-			}	 
-    	}
-    	todos.innerHTML = tasksToDisplay;
-	}
-    function deleteTask(taskNumber) {
-    	localStorage.removeItem("task" + taskNumber);
-    	localStorage.removeItem("lastName" + taskNumber);
-    	localStorage.removeItem("firstName" + taskNumber);
-    	localStorage.removeItem("dueDate" + taskNumber);
-    	
-    	localStorage.removeItem("status" + taskNumber);
-    	
-    	renderAllTask();
+                tasksToDisplay = list + tasksToDisplay;
+            }
+        }
+        todos.innerHTML = tasksToDisplay;
     }
 
-	function updateTaskStatus (taskNumber) {
-    	if (localStorage["status" + taskNumber] == "inprogress" ) {
-    		localStorage["status" + taskNumber] = "complete";
-    	}
-    	else {
-    		localStorage["status" + taskNumber] = "inprogress";
-    	}	
+    function deleteTask(taskNumber) {
+        localStorage.removeItem("task" + taskNumber);
+        localStorage.removeItem("lastName" + taskNumber);
+        localStorage.removeItem("firstName" + taskNumber);
+        localStorage.removeItem("dueDate" + taskNumber);
+
+        localStorage.removeItem("status" + taskNumber);
+
+        renderAllTask();
+    }
+
+    function updateTaskStatus(taskNumber) {
+        if (localStorage["status" + taskNumber] == "inprogress") {
+            localStorage["status" + taskNumber] = "complete";
+        } else {
+            localStorage["status" + taskNumber] = "inprogress";
+        }
     }
 
     function resetForm() {
-    	
-    	task.value = "";
-    	task.focus();
-    	
+
+        task.value = "";
+        task.focus();
+
     }
 
-    
-	</script>	
+    renderAllTask();
+    </script>
 </body>
+
 </html>

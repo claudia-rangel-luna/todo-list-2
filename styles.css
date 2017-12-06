@@ -16,3 +16,18 @@ body {
 .container {
 	background-color: lightblue;
 }
+
+section {
+	font-size: 24px;
+	font-weight: bold;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.checkbox {
+	font-size: 24px;
+	font-family: sans-serif;
+}
